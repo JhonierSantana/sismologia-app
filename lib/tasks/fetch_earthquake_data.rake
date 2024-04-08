@@ -46,13 +46,10 @@ namespace :fetch_earthquake_data do
           puts "Earthquake data saved: #{earthquake.title}"
         else
           puts "Error: The seismic event could not be saved."
-          puts "Validation errors: #{earthquake.errors.full_messages.join(', ')}"
         end
       end
 
       puts "Fetching earthquake data completed."
-    rescue JSON::ParserError => e
-      puts "Error parsing JSON response: #{e.message}"
     rescue StandardError => e
       puts "Error: #{e.message}"
     end

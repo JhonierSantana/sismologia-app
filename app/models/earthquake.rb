@@ -1,2 +1,4 @@
 class Earthquake < ApplicationRecord
-end
+    has_many :comments
+  end
+  

@@ -1,4 +1,4 @@
-class EarthquakesController < ApplicationController
+class Api::EarthquakesController < ApplicationController
     def index
       page = params.fetch(:page, 1).to_i
       per_page = [params.fetch(:per_page, 25).to_i, 1000].min
