@@ -1,7 +1,11 @@
 class Api::CommentsController < ApplicationController
-  before_action :set_earthquake
-
   def create
+    @earthquake = Earthquake.find_by(id: params[:feature_id])
+    unless @earthquake
+      render json: { error: "Earthquake with ID #{params[:feature_id]} not found" }, status: :not_found
+      return
+    end
+
     @comment = @earthquake.comments.build(comment_params)
     if @comment.save
       render json: @comment, status: :created
@@ -12,12 +16,7 @@ class Api::CommentsController < ApplicationController
 
   private
 
-  def set_earthquake
-    @earthquake = Earthquake.find(params[:earthquake_id])
-  end  
-
   def comment_params
-    params.require(:comment).permit(:body).merge(earthquake_id: params[:earthquake_id])
+    params.permit(:body)
   end
-  
 end

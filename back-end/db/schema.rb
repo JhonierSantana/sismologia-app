@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_08_152354) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_155247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.bigint "earthquakes_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "earthquake_id", null: false
     t.index ["earthquake_id"], name: "index_comments_on_earthquake_id"
-    t.index ["earthquakes_id"], name: "index_comments_on_earthquakes_id"
   end
 
   create_table "earthquakes", force: :cascade do |t|
@@ -40,5 +38,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_08_152354) do
   end
 
   add_foreign_key "comments", "earthquakes"
-  add_foreign_key "comments", "earthquakes", column: "earthquakes_id"
 end

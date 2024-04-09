@@ -30,3 +30,4 @@ module SismologiaApp
     config.api_only = true
   end
 end
+
