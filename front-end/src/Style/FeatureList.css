@@ -24,6 +24,7 @@ body {
     color: black;
     transition: transform 0.3s ease;
     background: radial-gradient(#9cdfb375, #b0d6c3 100%);
+    font-size: 30px;
   }
   
   .button:hover {
@@ -33,7 +34,7 @@ body {
   @media (min-width: 768px) {
     .button {
       padding: 8px 16px;
-      font-size: 16px;
+      font-size: 20px;
     }
   }
   
@@ -49,8 +50,8 @@ body {
   .feature-item {
     padding: 1rem;
     border: 1px solid #140c0c;
-    border-radius: 5%;
-    background: radial-gradient(#41b46775 42%, #149152 90%);
+    border-radius: 10px;
+    background: radial-gradient(#5fcc8375 42%, #4e9973 90%);
     transition: transform 0.3s ease;
   }
 
@@ -59,18 +60,18 @@ body {
   }
 
   .label {
-    font-size: 17px;
+    font-size: 20px;
   }
 select {
   width: 100px;
   padding: 8px 12px;
   border: 1px solid #000000;
-  border-radius: 5px;
+  border-radius: 10px;
   background: radial-gradient(#96a79c75, #b0d6c3 100%);
-  font-size: 17px;
   color: #333;
   margin-left: 10px;
   transition: transform 0.3s ease;
+  font-size: 20px;
 }
 
 select:hover {

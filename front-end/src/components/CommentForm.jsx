@@ -10,6 +10,11 @@ const CommentForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!body.trim()) {
+      setErrorMessage('Comment cannot be empty');
+      return;
+    }
   
     const id = parseInt(featureId);
     if (isNaN(id)) {
@@ -23,6 +28,8 @@ const CommentForm = () => {
       });
       setSuccessMessage('Comment created successfully!');
       setErrorMessage('');
+      setFeatureId('');
+      setBody('');
     } catch (error) {
       setSuccessMessage('');
       setErrorMessage('Error creating comment');

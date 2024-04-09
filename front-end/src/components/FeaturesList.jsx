@@ -7,6 +7,7 @@ const FeatureList = () => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
   const [magTypeFilter, setMagTypeFilter] = useState('');
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     fetchFeatures();
@@ -19,7 +20,9 @@ const FeatureList = () => {
     }
     axios.get(url)
       .then(response => {
-        setFeatures(response.data.data);
+        const newFeatures = response.data.data;
+        setFeatures(newFeatures);
+        setHasMore(newFeatures.length === perPage);
       })
       .catch(error => {
         console.error('Error fetching features:', error);
@@ -68,8 +71,8 @@ const FeatureList = () => {
         ))}
       </ul>
       <div className="pagination-buttons">
-        <button  className="button" onClick={handlePrevPage} disabled={page === 1}>Previous Page</button>
-        <button  className="button" onClick={handleNextPage}>Next Page</button>
+        <button className="button" onClick={handlePrevPage} disabled={page === 1}>Previous Page</button>
+        <button className="button" onClick={handleNextPage} disabled={!hasMore}>Next Page</button>
       </div>
     </div>
   );
